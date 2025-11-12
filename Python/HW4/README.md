@@ -5,13 +5,13 @@ Python 3.8+
 pip install pytest coverage flake8
 
 ## Run doctest for morse.encode
-python -m doctest -v morse.py
+python3 -m doctest -v morse.py
 
 ## Run pytest for pytest tests
-pytest -q
+pytest -v
 
 ## Run unittest tests
-python -m unittest discover -v -s tests -p "test_*.py"
+python3 -m unittest discover -v -s tests -p "test_*.py"
 
 ## Coverage report (html)
 coverage run -m pytest

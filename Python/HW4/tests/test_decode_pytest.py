@@ -1,6 +1,7 @@
 import pytest
 from morse import decode
 
+
 @pytest.mark.parametrize(
     "morse, expected",
     [

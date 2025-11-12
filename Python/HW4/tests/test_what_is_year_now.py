@@ -1,8 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
-import io
-import json
 from what_is_year_now import what_is_year_now
+
 
 class TestWhatIsYearNow(unittest.TestCase):
     @patch("urllib.request.urlopen")
@@ -30,5 +29,6 @@ class TestWhatIsYearNow(unittest.TestCase):
             with self.assertRaises(ValueError):
                 what_is_year_now()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
