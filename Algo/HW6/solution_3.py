@@ -1,21 +1,28 @@
-import bisect
-
+import heapq
 
 class StreamMedian:
     def __init__(self):
-        self.arr = [float('inf')]
-        self.n = 0
+        self.lo = []   
+        self.hi = []   
 
     def add_num(self, num: int) -> None:
-        pos = bisect.bisect_left(self.arr, num) # вроде как так можно)))
-        self.arr.insert(pos, num)
-        self.n += 1
+        if not self.lo or num <= -self.lo[0]:
+            heapq.heappush(self.lo, -num)
+        else:
+            heapq.heappush(self.hi, num)
+        if len(self.lo) > len(self.hi) + 1:
+            heapq.heappush(self.hi, -heapq.heappop(self.lo))
+        elif len(self.hi) > len(self.lo) + 1:
+            heapq.heappush(self.lo, -heapq.heappop(self.hi))
 
     def find_median(self) -> float:
-        if self.n % 2:
-            return self.arr[self.n // 2]
-        else:
-            return (self.arr[self.n // 2] + self.arr[self.n // 2 - 1]) / 2
+        if not self.lo and not self.hi:
+            return None
+        if len(self.lo) > len(self.hi):
+            return -self.lo[0]
+        if len(self.hi) > len(self.lo):
+            return self.hi[0]
+        return (-self.lo[0] + self.hi[0]) / 2
 
 
 def solution():
