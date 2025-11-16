@@ -1,0 +1,106 @@
+python3 -m doctest -v morse.py
+
+Trying:
+    encode('SOS')
+Expecting:
+    '... --- ...'
+ok
+Trying:
+    encode('A')
+Expecting:
+    '.-'
+ok
+Trying:
+    encode('@')  # doctest: +IGNORE_EXCEPTION_DETAIL
+Expecting:
+    Traceback (most recent call last):
+    ...
+    KeyError: '@'
+ok
+2 items had no tests:
+    morse
+    morse.decode
+1 items passed all tests:
+   3 tests in morse.encode
+3 tests in 3 items.
+3 passed and 0 failed.
+Test passed.
+
+------------------------------------------------------
+
+pytest -v
+
+======================================================================================================= test session starts ========================================================================================================platform linux -- Python 3.11.14, pytest-9.0.1, pluggy-1.6.0 -- /mnt/d/Downloads/AAA/Python/Avito-Analytics-Academy/Python/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /mnt/d/Downloads/AAA/Python/Avito-Analytics-Academy/Python/HW4
+collected 20 items
+
+tests/test_decode_pytest.py::test_decode_parametrized[... --- ...-SOS] PASSED                                                                                                                                                [  5%] 
+tests/test_decode_pytest.py::test_decode_parametrized[.- -... -.-.-ABC] PASSED                                                                                                                                               [ 10%] 
+tests/test_decode_pytest.py::test_decode_parametrized[.... . .-.. .-.. ----HELLO] PASSED                                                                                                                                     [ 15%] 
+tests/test_morse.py::test_roundtrip_sos_and_dot PASSED                                                                                                                                                                       [ 20%] 
+tests/test_morse.py::test_encode_decode_roundtrip_various PASSED                                                                                                                                                             [ 25%] 
+tests/test_one_hot_pytest.py::test_fit_transform_various[input_value0-expected0] PASSED                                                                                                                                      [ 30%] 
+tests/test_one_hot_pytest.py::test_fit_transform_various[input_value1-expected1] PASSED                                                                                                                                      [ 35%] 
+tests/test_one_hot_pytest.py::test_fit_transform_various[input_value2-expected2] PASSED                                                                                                                                      [ 40%]
+tests/test_one_hot_pytest.py::test_fit_transform_various[input_value3-expected3] PASSED                                                                                                                                      [ 45%] 
+tests/test_one_hot_pytest.py::test_fit_transform_no_args_raises PASSED                                                                                                                                                       [ 50%] 
+tests/test_one_hot_pytest.py::test_single_string_arg_is_one_category PASSED                                                                                                                                                  [ 55%] 
+tests/test_one_hot_pytest.py::test_iterable_of_chars_is_treated_as_sequence PASSED                                                                                                                                           [ 60%] 
+tests/test_one_hot_pytest.py::test_vector_length_equals_number_of_unique_categories PASSED                                                                                                                                   [ 65%]
+tests/test_one_hot_unittest.py::TestOneHotUnittest::test_basic_sequence PASSED                                                                                                                                               [ 70%] 
+tests/test_one_hot_unittest.py::TestOneHotUnittest::test_multiple_args PASSED                                                                                                                                                [ 75%] 
+tests/test_one_hot_unittest.py::TestOneHotUnittest::test_no_args_raises PASSED                                                                                                                                               [ 80%] 
+tests/test_one_hot_unittest.py::TestOneHotUnittest::test_not_in PASSED                                                                                                                                                       [ 85%] 
+tests/test_what_is_year_now.py::TestWhatIsYearNow::test_dmy_format PASSED                                                                                                                                                    [ 90%] 
+tests/test_what_is_year_now.py::TestWhatIsYearNow::test_invalid_format_raises PASSED                                                                                                                                         [ 95%] 
+tests/test_what_is_year_now.py::TestWhatIsYearNow::test_ymd_format PASSED                                                                                                                                                    [100%]
+
+======================================================================================================== 20 passed in 0.95s ========================================================================================================
+
+
+---------------------------------------------------------------------------------------------
+
+python3 -m unittest discover -v -s tests -p "test_*.py"
+
+test_basic_sequence (test_one_hot_unittest.TestOneHotUnittest.test_basic_sequence) ... ok
+test_multiple_args (test_one_hot_unittest.TestOneHotUnittest.test_multiple_args) ... ok
+test_no_args_raises (test_one_hot_unittest.TestOneHotUnittest.test_no_args_raises) ... ok
+test_not_in (test_one_hot_unittest.TestOneHotUnittest.test_not_in) ... ok
+test_dmy_format (test_what_is_year_now.TestWhatIsYearNow.test_dmy_format) ... ok
+test_invalid_format_raises (test_what_is_year_now.TestWhatIsYearNow.test_invalid_format_raises) ... ok
+test_ymd_format (test_what_is_year_now.TestWhatIsYearNow.test_ymd_format) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.009s
+
+OK
+
+--------------------------------------------------------------------------------------------------------
+
+coverage run -m pytest
+
+======================================================================================================= test session starts ========================================================================================================platform linux -- Python 3.11.14, pytest-9.0.1, pluggy-1.6.0
+rootdir: /mnt/d/Downloads/AAA/Python/Avito-Analytics-Academy/Python/HW4
+collected 20 items
+
+tests/test_decode_pytest.py ...                                                                                                                                                                                              [ 15%]
+tests/test_morse.py ..                                                                                                                                                                                                       [ 25%]
+tests/test_one_hot_pytest.py ........                                                                                                                                                                                        [ 65%]
+tests/test_one_hot_unittest.py ....                                                                                                                                                                                          [ 85%]
+tests/test_what_is_year_now.py ...                                                                                                                                                                                           [100%]
+
+======================================================================================================== 20 passed in 0.84s ========================================================================================================
+
+-----------------------------------------------------------------------------------------------------------
+
+
+coverage html
+
+Wrote HTML report to htmlcov/index.html
+
+
+-----------------------------------------------------------------------------------------------------------
+
+flake8 .
+
