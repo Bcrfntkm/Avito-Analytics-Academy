@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Data files
+*.parquet
+*.npy
+*.pkl
+*.zip
+train/
+test/
+image_features/
+
+# Model artifacts
+models/
+logs/
+error_analysis_plots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
