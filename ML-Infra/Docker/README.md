@@ -20,7 +20,7 @@ Make a Dockerfile which uses python version 3.8 or higher as its base image, ins
 Run the following commands:
 ```bash
 # create network
-docker network create --driver bridge webnet
+docker network create webnet
 
 # run server
 docker run \
@@ -65,4 +65,7 @@ curl http://127.0.0.1:8080/authors
 Open [grafana](http://localhost:3000/d/_eX4mpl3) in your browser.
 
 ### Step 6.
-Make a docker-compose file.
+Run the application using docker-compose:
+```bash
+docker-compose up --build
+```
